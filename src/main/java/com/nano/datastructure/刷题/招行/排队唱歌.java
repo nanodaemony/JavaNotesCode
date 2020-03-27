@@ -21,12 +21,7 @@ public class 排队唱歌 {
             dataList.add(sc.nextInt());
         }
 
-        dataList.sort(new Comparator<Integer>() {
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                return o1 - o2;
-            }
-        });
+        dataList.sort(Comparator.comparingInt(o -> o));
 
         int res = 0;
         for (int i = 0; i < dataList.size(); i++) {
@@ -35,4 +30,7 @@ public class 排队唱歌 {
 
         System.out.println(res);
     }
+
+
+
 }

@@ -1,5 +1,8 @@
 package com.nano.datastructure.刷题.链表;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 删除链表的中间结点
  *

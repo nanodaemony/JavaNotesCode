@@ -40,6 +40,7 @@ public class 石头碰撞 {
             }
         }
 
+
 //        while (!priorityQueue.isEmpty()) {
 //            System.out.println(priorityQueue.poll());
 //        }

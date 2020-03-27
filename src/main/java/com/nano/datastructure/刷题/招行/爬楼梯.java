@@ -24,11 +24,6 @@ public class 爬楼梯 {
             return 2;
         }
 
-        int res = 1;
-        int pre = 1;
-        int tmp = 0;
-
-
         return process(n - 1) + process(n - 2);
     }
 
