@@ -1,4 +1,4 @@
-package com.nano.designpattern;
+package com.nano.designpattern.sigleton;
 
 /**
  * 单例模式
