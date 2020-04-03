@@ -6,6 +6,7 @@
 
     <groupId>com.nano.java</groupId>
     <artifactId>java-notes-code</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <description>用于JavaNodes项目的代码</description>
     <build>
@@ -20,6 +21,12 @@
             </plugin>
         </plugins>
     </build>
+    <modules>
+        <module>designpattern</module>
+        <module>algorithm</module>
+        <module>jvm</module>
+        <module>javase</module>
+    </modules>
 
     <dependencies>
 
