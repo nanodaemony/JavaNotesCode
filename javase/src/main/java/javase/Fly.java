@@ -22,4 +22,6 @@ public interface Fly {
 
     // 接口中静态方法必须有方法体{}
     static void flyOnGround() {}
+
+
 }

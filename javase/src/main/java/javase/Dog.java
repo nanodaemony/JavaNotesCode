@@ -12,10 +12,16 @@ public class Dog extends Animal{
     @Setter
     private String owner;
 
+    private String food;
+
     public Dog(String name, String age, String owner) {
         super(name, age);
         this.owner = owner;
+        System.out.println("一只小狗出生");
     }
+
+
+
 
     // 覆写父类方法
     @Override

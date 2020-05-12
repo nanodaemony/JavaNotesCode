@@ -18,6 +18,7 @@ public class Animal {
     public Animal(String name, String age) {
         this.name = name;
         this.age = age;
+        System.out.println("一只动物出生");
     }
 
     // 父类方法

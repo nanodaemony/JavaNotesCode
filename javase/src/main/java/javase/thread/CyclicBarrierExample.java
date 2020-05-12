@@ -1,4 +1,4 @@
-package javase;
+package javase.thread;
 
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;

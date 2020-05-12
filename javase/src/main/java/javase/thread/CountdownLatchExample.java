@@ -1,4 +1,4 @@
-package javase;
+package javase.thread;
 
 import java.util.concurrent.CountDownLatch;
         import java.util.concurrent.ExecutorService;
