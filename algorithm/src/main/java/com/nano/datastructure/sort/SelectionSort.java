@@ -14,12 +14,14 @@ public class SelectionSort {
      *
      * @param array 数组
      */
-    public static void mySelectionSort(int[] array) {
+    public static void selectionSort(int[] array) {
+        // Base case
         if (array == null || array.length < 2) {
             return;
         }
         // 直接假设第一个是最小的元素，然后跟后面的逐一比较，如果更小则交换
         for (int i = 0; i < array.length; i++) {
+            // 从当前元素起找后面的元素
             for (int j = i; j < array.length; j++) {
                 if (array[i] > array[j]) {
                     swap(array, i, j);
@@ -31,7 +33,7 @@ public class SelectionSort {
 
     public static void main(String[] args) {
         int[] array = {3, 5, 2, 9, 9, 10, 7, 4, 6, 8, 1};
-        mySelectionSort(array);
+        selectionSort(array);
         System.out.println(Arrays.toString(array));
     }
 

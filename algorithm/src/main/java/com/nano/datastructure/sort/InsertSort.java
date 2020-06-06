@@ -11,10 +11,13 @@ public class InsertSort {
      * @param array 待排数组
      */
     public static void insertionSort(int[] array) {
+        // Base case
         if (array == null || array.length < 2) {
             return;
         }
+        // 从第一个开始遍历
         for (int i = 1; i < array.length; i++) {
+
             for (int j = i - 1; j >= 0 && array[j] > array[j + 1]; j--) {
                 swap(array, j, j + 1);
             }

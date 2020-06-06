@@ -10,10 +10,11 @@ public class BubbleSort {
 
     public static void bubbleSort(int[] array) {
 
-        // 没有数或者只有一个数直接返回，不排序
+        // Base case
         if (array == null || array.length < 2) {
             return;
         }
+        // 从尾部开始遍历
         for (int end = array.length - 1; end > 0; end--) {
             for (int i = 0; i < end; i++) {
                 // 不断比较前一个值大于后一个

@@ -19,30 +19,40 @@ public class Code05_Prim {
 
 	public static Set<Edge> primMST(Graph graph) {
 		// 解锁的边进入小根堆
-		PriorityQueue<Edge> priorityQueue = new PriorityQueue<>(
-				new EdgeComparator());
+		PriorityQueue<Edge> priorityQueue = new PriorityQueue<>(new EdgeComparator());
 		HashSet<Node> set = new HashSet<>();
-		Set<Edge> result = new HashSet<>(); // 依次挑选的的边在result里
-		for (Node node : graph.nodes.values()) { // 随便挑了一个点
-			// node 是开始点
+		// 依次挑选的的边在result里
+		Set<Edge> result = new HashSet<>();
+		// 随便挑了一个点
+		for (Node node : graph.nodes.values()) {
+			// node是开始点
 			if (!set.contains(node)) {
+				// 不在集合的点就加入set
 				set.add(node);
-				for (Edge edge : node.edges) { // 由一个点，解锁所有相连的边
+				// 将这个点所有相连的边解锁，加入优先级队列
+				for (Edge edge : node.edges) {
 					priorityQueue.add(edge);
 				}
+
 				while (!priorityQueue.isEmpty()) {
-					Edge edge = priorityQueue.poll(); // 弹出解锁的边中，最小的边
-					Node toNode = edge.to; // 可能的一个新的点
-					if (!set.contains(toNode)) { // 不含有的时候，就是新的点
+					// 弹出解锁的边中，权重最小的边
+					Edge edge = priorityQueue.poll();
+					// 获取这个边的to结点
+					Node toNode = edge.to;
+					// 不含有的时候，就是新的点
+					if (!set.contains(toNode)) {
+						// 记录已经遍历
 						set.add(toNode);
+						// 含有新的结点的且是权重小的边则加入结果集
 						result.add(edge);
+						// 将to结点的全部边加入优先级队列中
 						for (Edge nextEdge : toNode.edges) {
 							priorityQueue.add(nextEdge);
 						}
 					}
 				}
 			}
-			//break;
+			// break;
 		}
 		return result;
 	}

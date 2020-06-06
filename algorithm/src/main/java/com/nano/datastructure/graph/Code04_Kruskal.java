@@ -40,18 +40,7 @@ public class Code04_Kruskal {
 			}
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	// Union-Find Set
 	public static class UnionFind {
@@ -123,8 +112,10 @@ public class Code04_Kruskal {
 	}
 
 	public static Set<Edge> kruskalMST(Graph graph) {
+		// 并查集
 		UnionFind unionFind = new UnionFind();
 		unionFind.makeSets(graph.nodes.values());
+		// 优先级队列
 		PriorityQueue<Edge> priorityQueue = new PriorityQueue<>(new EdgeComparator());
 		for (Edge edge : graph.edges) { // M 条边
 			priorityQueue.add(edge);  // O(logM)

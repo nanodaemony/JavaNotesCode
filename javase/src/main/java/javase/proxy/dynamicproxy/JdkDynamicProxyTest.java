@@ -5,6 +5,7 @@ import javase.proxy.staticproxy.UserServiceImpl;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
+import java.util.ArrayDeque;
 
 /**
  * JDK动态代理测试
@@ -34,6 +35,7 @@ public class JdkDynamicProxyTest {
         // 通过代理对象调用代理的方法
         proxy.select();
         proxy.update();
+
 
         // 保存JDK动态代理生成的代理类，类名保存为 UserServiceProxy
         // ProxyUtils.generateClassFile(userServiceImpl.getClass(), "UserServiceProxy");

@@ -24,17 +24,17 @@ public class BinarySearch {
      * @return 如果找到就返回下标，如果没有找到就返回 -1
      */
     public static int binarySearch(int[] array, int leftIndex, int rightIndex, int target) {
-
+        // Base case
         if (array == null || array.length == 0) {
             return -1;
         }
 
-        // 当 left > right 时，说明已经递归整个数组，但是没有找到，必须要此处，不然会无限递归下去
+        // 当 left > right 时，说明已经递归整个数组，但是没有找到，退出递归，不然会无限递归下去
         if (leftIndex > rightIndex) {
             return -1;
         }
 
-        // 找中间值
+        // 找中间索引与值
         int midIndex = (leftIndex + rightIndex) / 2;
         int midValue = array[midIndex];
 
@@ -59,7 +59,7 @@ public class BinarySearch {
      * @return 返回对应下标，-1表示没有找到
      */
     public static int binarySearch(int[] array, int target) {
-
+        // 左右索引值
         int leftIndex = 0;
         int rightIndex = array.length - 1;
         // 说明继续查找
@@ -75,6 +75,7 @@ public class BinarySearch {
                 leftIndex = midIndex + 1;
             }
         }
+        // Not find
         return -1;
     }
 

@@ -8,11 +8,15 @@ import java.lang.annotation.Target;
 
 /**
  * 水果名称注解
+ * @author cz
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.FIELD)
+@Target({ElementType.FIELD, ElementType.METHOD})
 public @interface FruitName {
-    // String类型
+
+    /**
+     * String类型
+     */
     String value() default "";
 }
