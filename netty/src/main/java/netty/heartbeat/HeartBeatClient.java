@@ -15,6 +15,10 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 
+/**
+ * 带心跳机制的Client
+ * @author cz
+ */
 public class HeartBeatClient {
     public static void main(String[] args) throws Exception {
         EventLoopGroup eventLoopGroup = new NioEventLoopGroup();

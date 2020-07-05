@@ -18,7 +18,7 @@ public class 判断是否是对称二叉树 {
             return true;
         } else if ((left == null&& right != null) ||
                   (left != null && right == null) ||
-                  (left.value != right.value)){
+                  (left.val != right.val)){
             return false;
         }
         return check(left.left, right.right) && check(left.right, right.left);

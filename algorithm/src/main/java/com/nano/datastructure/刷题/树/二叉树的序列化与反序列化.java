@@ -17,7 +17,7 @@ public class 二叉树的序列化与反序列化 {
         if (head == null) {
             return "#!";
         }
-        String res = head.value + "!";
+        String res = head.val + "!";
         res = res + serializeByPre(head.left);
         res = res + serializeByPre(head.right);
         return res;

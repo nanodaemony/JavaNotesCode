@@ -42,12 +42,17 @@ public class ChatClient {
             Channel channel = channelFuture.channel();
             System.out.println("========" + channel.localAddress() + "========");
             // 客户端需要输入信息,创建一个扫描器
-            Scanner scanner = new Scanner(System.in);
-            while (scanner.hasNextLine()) {
-                String msg = scanner.nextLine();
-                // 通过channel发送到服务器端
-                channel.writeAndFlush(msg);
+//            Scanner scanner = new Scanner(System.in);
+//            while (scanner.hasNextLine()) {
+//                String msg = scanner.nextLine();
+//                // 通过channel发送到服务器端
+//                channel.writeAndFlush(msg);
+//            }
+            // 测试粘包
+            for (int i = 0; i < 200; i++) {
+                channel.writeAndFlush("Hello!NanoJava!");
             }
+
         } finally {
             group.shutdownGracefully();
         }

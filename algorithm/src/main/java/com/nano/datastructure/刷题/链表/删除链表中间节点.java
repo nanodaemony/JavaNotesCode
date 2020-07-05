@@ -1,8 +1,5 @@
 package com.nano.datastructure.刷题.链表;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * 删除链表的中间结点
  *
@@ -16,7 +13,7 @@ public class 删除链表中间节点 {
      * @param head 头结点
      * @return 删除中间结点之后的链表头
      */
-    public static Node removeMidNote(Node head) {
+    public static ListNode removeMidNote(ListNode head) {
         // 只有一个结点和无结点的情况
         if (head == null || head.next == null) {
             return head;
@@ -27,8 +24,8 @@ public class 删除链表中间节点 {
             return head.next;
         }
         // 快慢指针
-        Node slow = head;
-        Node fast = head.next.next;
+        ListNode slow = head;
+        ListNode fast = head.next.next;
         // 遍历直到快指针到链表尾部
         while (fast.next != null && fast.next.next != null) {
             // 慢指针走一步 快指针走两步

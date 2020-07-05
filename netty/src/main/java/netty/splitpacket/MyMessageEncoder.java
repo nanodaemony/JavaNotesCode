@@ -4,6 +4,10 @@ import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToByteEncoder;
 
+/**
+ * 自定义消息体编码器
+ * @author cz
+ */
 public class MyMessageEncoder extends MessageToByteEncoder<MyMessageProtocol> {
     @Override
     protected void encode(ChannelHandlerContext ctx, MyMessageProtocol msg, ByteBuf out) throws Exception {

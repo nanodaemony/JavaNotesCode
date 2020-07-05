@@ -6,6 +6,10 @@ import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;
 
+/**
+ * 自定义解码器
+ * @author cz
+ */
 public class ByteToLongDecoder extends ByteToMessageDecoder {
 
     @Override

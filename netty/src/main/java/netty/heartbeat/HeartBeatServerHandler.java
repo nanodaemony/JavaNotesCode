@@ -4,6 +4,10 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.handler.timeout.IdleStateEvent;
 
+/**
+ * 服务器心跳处理器
+ * @author cz
+ */
 public class HeartBeatServerHandler extends SimpleChannelInboundHandler<String> {
 
     int readIdleTimes = 0;
@@ -36,6 +40,8 @@ public class HeartBeatServerHandler extends SimpleChannelInboundHandler<String> 
                 eventType = "读写空闲";
                 // 不处理
                 break;
+
+            default:
         }
 
 

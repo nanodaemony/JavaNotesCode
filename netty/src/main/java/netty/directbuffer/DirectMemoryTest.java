@@ -9,7 +9,7 @@ public class DirectMemoryTest {
 
     public static void heapAccess() {
         long startTime = System.currentTimeMillis();
-        //分配堆内存
+        // 分配堆内存
         ByteBuffer buffer = ByteBuffer.allocate(1000);
         for (int i = 0; i < 100000; i++) {
             for (int j = 0; j < 200; j++) {
@@ -27,7 +27,7 @@ public class DirectMemoryTest {
 
     public static void directAccess() {
         long startTime = System.currentTimeMillis();
-        //分配直接内存
+        // 分配直接内存 变量buffer还是在JVM内，但是引用的内存是在JVM内存之外
         ByteBuffer buffer = ByteBuffer.allocateDirect(1000);
         for (int i = 0; i < 100000; i++) {
             for (int j = 0; j < 200; j++) {
@@ -66,9 +66,7 @@ public class DirectMemoryTest {
             heapAccess();
             directAccess();
         }
-
         System.out.println();
-
         for (int i = 0; i < 10; i++) {
             heapAllocate();
             directAllocate();

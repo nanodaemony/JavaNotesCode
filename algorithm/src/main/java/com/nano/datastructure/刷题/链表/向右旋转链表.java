@@ -2,12 +2,12 @@ package com.nano.datastructure.刷题.链表;
 
 public class 向右旋转链表 {
 
-    public Node rotateRight(Node head, int k) {
+    public ListNode rotateRight(ListNode head, int k) {
         // Base case
         if (head == null || k == 0) {
             return head;
         }
-        Node tmp = head;
+        ListNode tmp = head;
         int length = 0;
         // 求出链表的长度
         while (tmp != null) {
@@ -19,7 +19,7 @@ public class 向右旋转链表 {
             return head;
         }
         // 保存一下头节点
-        Node node = head;
+        ListNode listNode = head;
         // 快慢指针
         tmp = head;
         while (k > 0) {
@@ -31,11 +31,11 @@ public class 向右旋转链表 {
             tmp = tmp.next;
         }
         // 记录next的位置，也就是返回值的头结点
-        Node res = head.next;
+        ListNode res = head.next;
         // 断开连接
         head.next = null;
         // 后一段的末尾指向前一段的开头
-        tmp.next = node;
+        tmp.next = listNode;
         return res;
     }
 }

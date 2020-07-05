@@ -40,7 +40,7 @@ public class 判断一棵树是否是另一棵树的子结构 {
         if (root2 == null)
             return true;
         else {
-            if (root1 == null || root1.value != root2.value)
+            if (root1 == null || root1.val != root2.val)
                 return false;
             return IsSubTree(root1.left, root2.left) & IsSubTree(root1.right, root2.right);
         }

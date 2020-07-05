@@ -5,14 +5,14 @@ public class 倒数第K个节点 {
 
 
 
-    public Node FindKthToTail(Node head,int k) {
+    public ListNode FindKthToTail(ListNode head, int k) {
         // 边界条件
         if(head == null) {
             return null;
         }
         int length = 0;
         // 引用当前头结点
-        Node current = head;
+        ListNode current = head;
         // 求链表长度
         while(head != null) {
             head = head.next;

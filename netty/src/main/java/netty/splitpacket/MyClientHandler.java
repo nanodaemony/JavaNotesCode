@@ -4,6 +4,10 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.util.CharsetUtil;
 
+/**
+ * 客户端处理器
+ * @author cz
+ */
 public class MyClientHandler extends SimpleChannelInboundHandler<MyMessageProtocol> {
 
     @Override

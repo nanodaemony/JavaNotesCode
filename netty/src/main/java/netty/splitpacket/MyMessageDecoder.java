@@ -6,6 +6,10 @@ import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;
 
+/**
+ * 自定义消息体解码器
+ * @author cz
+ */
 public class MyMessageDecoder extends ByteToMessageDecoder {
 
     int length = 0;
@@ -13,8 +17,8 @@ public class MyMessageDecoder extends ByteToMessageDecoder {
     @Override
     protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
         System.out.println();
-        System.out.println("MyMessageDecoder decode 被调用");
-        //需要将得到二进制字节码-> MyMessageProtocol 数据包(对象)
+        System.out.println("MyMessageDecoder decode被调用");
+        // 需要将得到二进制字节码-> MyMessageProtocol 数据包(对象)
         System.out.println(in);
 
         if(in.readableBytes() >= 4) {
@@ -29,7 +33,7 @@ public class MyMessageDecoder extends ByteToMessageDecoder {
             if (in.readableBytes() >= length){
                 in.readBytes(content);
 
-                //封装成MyMessageProtocol对象，传递到下一个handler业务处理
+                // 封装成MyMessageProtocol对象，传递到下一个handler业务处理
                 MyMessageProtocol messageProtocol = new MyMessageProtocol();
                 messageProtocol.setLen(length);
                 messageProtocol.setContent(content);

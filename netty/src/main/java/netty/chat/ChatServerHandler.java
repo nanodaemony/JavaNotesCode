@@ -56,6 +56,7 @@ public class ChatServerHandler extends SimpleChannelInboundHandler<String> {
     protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
         // 获取到当前channel
         Channel channel = ctx.channel();
+        System.out.println(msg.toString());
         // 这时我们遍历channelGroup里面所有的Channel,根据不同的情况,回送不同的消息
         channelGroup.forEach(ch -> {
             // 不是当前的 channel,转发消息

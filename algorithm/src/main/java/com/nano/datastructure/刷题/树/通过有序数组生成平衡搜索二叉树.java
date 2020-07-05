@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import lombok.val;
-
 /**
  * 给定一个有序数组，一直其中没有重复值，用这个有序数组生成一颗平衡搜索二叉树
  */
@@ -47,7 +45,7 @@ public class 通过有序数组生成平衡搜索二叉树 {
         queue.offer(head);
         while (!queue.isEmpty()) {
             head = queue.poll();
-            resList.add(head.value);
+            resList.add(head.val);
             if (head.left != null) {
                 queue.offer(head.left);
             }
