@@ -6,16 +6,15 @@ package com.nano.datastructure.sort;
  */
 public class HeapSort {
     public static void heapSort(int[] array) {
-        if (array == null || array.length < 2) {
-            return;
-        }
+        // Base case
+        if (array == null || array.length < 2) return;
         // 这一步是不断取元素构造大顶堆 构建完成之后堆值并不是完全有序的
         for (int i = 0; i < array.length; i++) {
-            heapInsert(array, i);
+            buildHeap(array, i);
         }
         // 当前size等于数组大小 size表示结构的大小
         int size = array.length;
-        // 交换堆的对顶元素与最后一个元素
+        // 交换堆顶元素与最后一个元素
         swap(array, 0, --size);
         // 不断把堆顶元素与最后一个元素进行交换 然后进行下沉
         while (size > 0) {
@@ -32,7 +31,7 @@ public class HeapSort {
      * @param array 数组
      * @param index 索引
      */
-    public static void heapInsert(int[] array, int index) {
+    public static void buildHeap(int[] array, int index) {
         // 如果子节点元素比父节点小就交换
         while (array[index] > array[(index - 1) / 2]) {
             swap(array, index, (index - 1) / 2);
@@ -46,18 +45,15 @@ public class HeapSort {
      *
      * @param array 数组
      * @param index 索引
-     * @param size 堆的大小
+     * @param size 当前剩余堆的大小
      */
     private static void sink(int[] array, int index, int size) {
         // 左子节点
         int left = index * 2 + 1;
         while (left < size) {
-
-            int largest = left + 1 < size && array[left + 1] > array[left] ? left + 1 : left;
+            int largest = (left + 1 < size && array[left + 1] > array[left]) ? left + 1 : left;
             largest = array[largest] > array[index] ? largest : index;
-            if (largest == index) {
-                break;
-            }
+            if (largest == index) break;
             swap(array, largest, index);
             index = largest;
             left = index * 2 + 1;

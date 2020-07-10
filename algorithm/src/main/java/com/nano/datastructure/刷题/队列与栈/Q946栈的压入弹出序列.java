@@ -10,11 +10,12 @@ import java.util.Stack;
  * 弹出序列，但4,3,5,1,2就不可能是该压栈序列的弹出序列。
  * （注意：这两个序列的长度是相等的）
  */
-public class 栈的压入弹出序列 {
+public class Q946栈的压入弹出序列 {
 
-    public boolean isPopOrder(int [] pushArray,int [] popArray) {
+    public boolean validateStackSequences(int[] pushArray, int[] popArray) {
+        // Base case
         if (popArray.length == 0 || pushArray.length == 0) {
-            return false;
+            return true;
         }
         // 使用辅助栈
         Stack<Integer> stack = new Stack<>();
@@ -31,7 +32,6 @@ public class 栈的压入弹出序列 {
                 // 更改索引
                 popIndex++;
             }
-
         }
         // 最后只需要判断栈是否为空就行了
         return stack.isEmpty();
