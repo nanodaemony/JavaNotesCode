@@ -1,4 +1,4 @@
-package javase.thread;
+package javase.thread.future;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;

@@ -17,26 +17,23 @@ public class Q232用栈实现队列 {
 	}
 
 	public int pop() {
-		in2out();
-		return outStack.pop();
-	}
-
-	public int peek() {
-		in2out();
-		return outStack.peek();
-	}
-
-	// 如果out栈为空则将in栈全部压到out栈中
-	private void in2out() {
-		if (outStack.isEmpty()) {
-			while (!inStack.isEmpty()) {
+		// 出栈为空
+		if(outStack.isEmpty()) {
+			// 如果入栈也为空，抛异常
+			if(inStack.isEmpty()) {
+				return -1;
+			}
+			// 将入栈的全部元素放到出栈中
+			while(!inStack.isEmpty()) {
 				outStack.push(inStack.pop());
 			}
 		}
+		// 弹出元素
+		return outStack.pop();
 	}
+
 
 	public boolean empty() {
 		return inStack.isEmpty() && outStack.isEmpty();
 	}
-
 }

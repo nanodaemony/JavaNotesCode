@@ -28,6 +28,7 @@
         <module>javase</module>
         <module>mybatis</module>
         <module>netty</module>
+        <module>work</module>
     </modules>
 
     <dependencies>

@@ -1,4 +1,4 @@
-package javase.thread;
+package javase.thread.countdownlatch;
 
 import java.util.concurrent.CountDownLatch;
         import java.util.concurrent.ExecutorService;
@@ -18,9 +18,10 @@ public class CountdownLatchExample {
                 System.out.print("run..");
                 // 在此处等待
                 countDownLatch.countDown();
+                System.out.println("finish");
             });
         }
-        // 等待
+        // 当前线程等待其他的十个线程完成任务
         countDownLatch.await();
         // 全部完成后打印end
         System.out.println("end");

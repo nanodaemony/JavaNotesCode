@@ -18,7 +18,7 @@ public class 合并两个有序链表 {
 		if (list1 == null) return list2;
 		if (list2 == null) return list1;
 		// 根据两个节点的值进行不同的递归操作
-		if (list1.value <= list2.value) {
+		if (list1.val <= list2.val) {
 			// 需要设置list1的下一个节点并返回
 			list1.next = Merge(list1.next, list2);
 			return list1;
@@ -43,7 +43,7 @@ public class 合并两个有序链表 {
 		// 两个都不为null才能合并
 		while (list1 != null && list2 != null) {
 			// 说明list1的节点是需要合并的
-			if (list1.value <= list2.value) {
+			if (list1.val <= list2.val) {
 				// 合并到cur后面
 				cur.next = list1;
 				// list1移动一个

@@ -4,7 +4,7 @@ package com.nano.datastructure.刷题.剑指Offer;
  * @author: nano
  * @time: 2020/7/11 20:43
  */
-public class 数组中重复的数字 {
+public class Q3数组中重复的数字 {
 
 
 	public int findRepeatNumber(int[] nums) {
@@ -14,11 +14,11 @@ public class 数组中重复的数字 {
 		for (int i = 0; i < nums.length; i++) {
 			// 如果当前位置不等于索引则不断进行交换
 			while (nums[i] != i) {
-				// 如果已经有了
+				// 如果目标索引处已经有了元素则说明重复
 				if (nums[i] == nums[nums[i]]) {
 					return nums[i];
 				}
-				// 交换
+				// 否则进行交换
 				swap(nums, i, nums[i]);
 			}
 		}

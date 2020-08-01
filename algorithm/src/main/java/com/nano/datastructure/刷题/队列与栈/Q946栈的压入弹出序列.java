@@ -14,27 +14,38 @@ public class Q946栈的压入弹出序列 {
 
     public boolean validateStackSequences(int[] pushArray, int[] popArray) {
         // Base case
-        if (popArray.length == 0 || pushArray.length == 0) {
-            return true;
-        }
+        if (popArray.length == 0 || pushArray.length == 0) return true;
         // 使用辅助栈
         Stack<Integer> stack = new Stack<>();
-        // 出栈数组指针
+        // 出栈数组指针指向首位
         int popIndex = 0;
-
+        // 遍历压栈序列
         for (int i = 0; i < pushArray.length; i++) {
-            // 不断将入站数组压栈
+            // 不断将入栈数组压栈
             stack.push(pushArray[i]);
             // 入栈后判断是否是为空或者栈顶元素是否是等于出栈数组索引处的值
             while (!stack.isEmpty() && stack.peek() == popArray[popIndex]) {
                 // 弹出元素
                 stack.pop();
-                // 更改索引
+                // 出栈序列指针后移
                 popIndex++;
             }
         }
         // 最后只需要判断栈是否为空就行了
         return stack.isEmpty();
+    }
+
+
+    public boolean validateStackSequences2(int[] pushArray, int[] popArray) {
+        int[] stack = new int[pushArray.length];
+        int size = 0;
+        for (int i = 0, j = 0; i < pushArray.length; i++) {
+            stack[size++] = pushArray[i];
+            while (size != 0 && stack[size - 1] == popArray[j]) {
+                size--;j++;
+            }
+        }
+        return size == 0;
     }
 
 

@@ -23,11 +23,11 @@ public class Q20有效的括号 {
 					return false;
 				}
 				// 弹出栈顶符号
-				char cStack = stack.pop();
+				char temp = stack.pop();
 				// 必须完全匹配才行
-				boolean b1 = c == ')' && cStack != '(';
-				boolean b2 = c == ']' && cStack != '[';
-				boolean b3 = c == '}' && cStack != '{';
+				boolean b1 = c == ')' && temp != '(';
+				boolean b2 = c == ']' && temp != '[';
+				boolean b3 = c == '}' && temp != '{';
 				if (b1 || b2 || b3) {
 					return false;
 				}

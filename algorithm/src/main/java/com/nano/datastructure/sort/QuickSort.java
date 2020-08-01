@@ -17,6 +17,9 @@ public class QuickSort {
 	}
 
 
+	/**
+	 * 快速排序--三向切分版本
+	 */
 	public static void quickSort(int[] array) {
 		// Base case
 		if (array == null || array.length < 2) return;
@@ -81,7 +84,12 @@ public class QuickSort {
 	}
 
 
-	//--------------------另一个版本-----------------------
+	//---------------------------------------------------------------------------------
+
+
+	/**
+	 * 快排--普通版本
+	 */
 	public static void quickSort2(int[] array) {
 		if (array == null || array.length < 2) return;
 		quickSort2(array, 0, array.length - 1);
@@ -90,6 +98,7 @@ public class QuickSort {
 
 	private static void quickSort2(int[] array, int left, int right) {
 		if (left < right) {
+			// 获取枢纽值
 			int pivot = partition2(array, left, right);
 			quickSort2(array, left, pivot - 1);
 			quickSort2(array, pivot + 1, right);
@@ -120,20 +129,6 @@ public class QuickSort {
 
 
 
-    public int select(int[] nums, int k) {
-        int left = 0, right = nums.length - 1;
-        while (right > left) {
-            int pivot = partition2(nums, left, right);
-            if (pivot == k) {
-                return nums[k];
-            } else if (pivot > k) {
-                right = pivot - 1;
-            } else {
-                left = pivot + 1;
-            }
-        }
-        return nums[k];
-    }
 
 
 }
