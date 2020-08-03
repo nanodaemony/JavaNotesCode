@@ -6,21 +6,26 @@ import java.util.Queue;
 
 public class Code01_BFS {
 
-	// 从node出发，进行宽度优先遍历
 	public static void bfs(Node node) {
-		if (node == null) {
-			return;
-		}
+		// Base case
+		if (node == null) return;
+		// 使用队列进行遍历
 		Queue<Node> queue = new LinkedList<>();
-		HashSet<Node> set = new HashSet<>();
+		// 使用Set存储已经遍历的结点
+		HashSet<Node> visitedSet = new HashSet<>();
+		// 加入头结点
 		queue.add(node);
-		set.add(node);
+		visitedSet.add(node);
 		while (!queue.isEmpty()) {
+			// 弹出一个结点
 			Node cur = queue.poll();
+			// 处理数据
 			System.out.println(cur.value);
+			// 迭代处理各个没有遍历的结点
 			for (Node next : cur.nexts) {
-				if (!set.contains(next)) {
-					set.add(next);
+				// 如果没有遍历过则加入队列中
+				if (!visitedSet.contains(next)) {
+					visitedSet.add(next);
 					queue.add(next);
 				}
 			}

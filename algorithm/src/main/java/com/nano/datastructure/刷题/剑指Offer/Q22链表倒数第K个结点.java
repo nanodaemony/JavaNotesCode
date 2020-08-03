@@ -4,7 +4,7 @@ package com.nano.datastructure.刷题.剑指Offer;
  * @author: nano
  * @time: 2020/7/1 17:04
  */
-public class 链表倒数第K个结点 {
+public class Q22链表倒数第K个结点 {
 
 
 	public ListNode FindKthToTail(ListNode head, int k) {

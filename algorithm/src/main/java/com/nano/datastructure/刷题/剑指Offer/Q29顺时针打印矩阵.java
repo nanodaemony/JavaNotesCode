@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * @author: nano
  * @time: 2020/7/1 19:19
  */
-public class 顺时针打印矩阵 {
+public class Q29顺时针打印矩阵 {
 
 
 	public ArrayList<Integer> printMatrix(int[][] matrix) {
