@@ -9,13 +9,11 @@ public class Q198打家劫舍 {
 
 	public int rob(int[] nums) {
 
-		if (nums == null || nums.length == 0) {
-			return 0;
-		}
-		if (nums.length == 1) {
-			return nums[0];
-		}
+		// Base case
+		if (nums == null || nums.length == 0) return 0;
+		if (nums.length == 1) return nums[0];
 		int[] dp = new int[nums.length];
+		// 初始化DP
 		dp[0] = nums[0];
 		dp[1] = Math.max(nums[0], nums[1]);
 
@@ -27,13 +25,10 @@ public class Q198打家劫舍 {
 
 
 	public int rob2(int[] nums) {
-		if (nums == null || nums.length == 0) {
-			return 0;
-		}
+		if (nums == null || nums.length == 0) return 0;
 		int length = nums.length;
-		if (length == 1) {
-			return nums[0];
-		}
+		if (length == 1) return nums[0];
+		// 使用两个变量记录之前的位置
 		int slow = nums[0], fast = Math.max(nums[0], nums[1]);
 		for (int i = 2; i < length; i++) {
 			int temp = fast;

@@ -10,13 +10,13 @@ public class Q106从中序与后序遍历序列构造二叉树 {
 
 
 	// 使用辅助的HashMap存储元素，键为中序数组元素值，值为中序数组索引
-	HashMap<Integer, Integer> memoMap = new HashMap<>();
+	HashMap<Integer, Integer> postMap = new HashMap<>();
 
 	int[] post;
 
 	public TreeNode buildTree(int[] inOrder, int[] postOrder) {
 		// 将中序数组的值及其对应的索引全部放入到Map中
-		for (int i = 0; i < inOrder.length; i++) memoMap.put(inOrder[i], i);
+		for (int i = 0; i < inOrder.length; i++) postMap.put(inOrder[i], i);
 		post = postOrder;
 		// 使用辅助方法
 		return buildTree(0, inOrder.length - 1, 0, post.length - 1);
@@ -26,12 +26,12 @@ public class Q106从中序与后序遍历序列构造二叉树 {
 	public TreeNode buildTree(int inStart, int inEnd, int postStart, int postEnd) {
 		// Base case
 		if (inEnd < inStart || postEnd < postStart) return null;
-		// 根节点等于序续数组的最后一个元素值
+		// 根节点等于后序数组的最后一个元素值
 		int rootVal = post[postEnd];
-		// 从Map中找到等于这个值的元素的索引
-		int rootIndex = memoMap.get(rootVal);
 		// 构造根节点并递归设置其左右子结点
 		TreeNode root = new TreeNode(rootVal);
+		// 从Map中找到等于这个值的元素的中序数组索引
+		int rootIndex = postMap.get(rootVal);
 		// 分别构造左右子树 左右子树的边界确定是最重要的 自己画个图看看！
 		root.left = buildTree(inStart, rootIndex - 1, postStart, postStart + rootIndex - inStart - 1);
 		root.right = buildTree(rootIndex + 1, inEnd, postStart + rootIndex - inStart, postEnd - 1);

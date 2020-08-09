@@ -20,9 +20,7 @@ public class Q112根结点到叶子节点路径总合 {
 		// Base case
 		if(root == null) return;
 		// 如果当前的sum等于结点值且当前正好为根结点则找到
-		if(sum == root.val && (root.left == null && root.right == null)) {
-			isFind = true;
-		}
+		if(sum == root.val && (root.left == null && root.right == null)) isFind = true;
 		helper(root.left, sum - root.val);
 		helper(root.right, sum - root.val);
 	}
@@ -34,8 +32,8 @@ public class Q112根结点到叶子节点路径总合 {
 	public boolean hasPathSum2(TreeNode root, int sum) {
 		if (root == null) return false;
 
-		LinkedList<TreeNode> nodeStack = new LinkedList();
-		LinkedList<Integer> sumStack = new LinkedList();
+		LinkedList<TreeNode> nodeStack = new LinkedList<>();
+		LinkedList<Integer> sumStack = new LinkedList<>();
 		nodeStack.add(root);
 		sumStack.add(sum - root.val);
 
@@ -44,9 +42,7 @@ public class Q112根结点到叶子节点路径总合 {
 		while (!nodeStack.isEmpty() ) {
 			node = nodeStack.pollLast();
 			currSum = sumStack.pollLast();
-			if ((node.right == null) && (node.left == null) && (currSum == 0)) {
-				return true;
-			}
+			if ((node.right == null) && (node.left == null) && (currSum == 0)) return true;
 
 			if (node.right != null) {
 				nodeStack.add(node.right);

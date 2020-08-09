@@ -13,21 +13,19 @@ public class Q637二叉树的层平均值 {
 
 	public List<Double> averageOfLevels(TreeNode root) {
 		// Base case
-		if(root == null) {
-			return new ArrayList();
-		}
+		if(root == null) return new ArrayList<>();
 		// 根节点入队列
-		Queue<TreeNode> queue = new LinkedList<TreeNode>() ;
+		Queue<TreeNode> queue = new LinkedList<>() ;
 		queue.add(root);
-		List<Double> resList = new ArrayList();
+		List<Double> resList = new ArrayList<>();
 		// 队列为空时推退出循环
 		while(queue.size() != 0) {
 			// 获取当前队列中的元素个数，也就是当前这一层有多少个结点
-			int len = queue.size();
+			int size = queue.size();
 			// 保存这一层的节点数值的和
 			double sum = 0;
 			// 将当前层的元素依次出队列并处理数据，每弹出一个结点并再次将其左右子节点入队列
-			for(int i = 0; i < len; i++) {
+			for(int i = 0; i < size; i++) {
 				// 出队列并处理数据
 				TreeNode temp = queue.poll();
 				// 转换成double类型
@@ -37,7 +35,7 @@ public class Q637二叉树的层平均值 {
 				if(temp.right != null) queue.add(temp.right);
 			}
 			// 这一层弹出的元素处理完毕
-			resList.add(sum / len);
+			resList.add(sum / size);
 		}
 		return resList;
 	}
@@ -50,26 +48,26 @@ public class Q637二叉树的层平均值 {
 	public List <Double> averageOfLevels2(TreeNode root) {
 		List<Double> resList = new ArrayList<>();
 		// 记录每层的元素个数数组
-		List <Integer> levelNodeNumberList = new ArrayList<>();
+		List <Integer> numberList = new ArrayList<>();
 		// 记录每层元素和数组
-		List <Double> levelSumList = new ArrayList<>();
+		List <Double> sumList = new ArrayList<>();
 		// 递归求上述的两个数组的值
-		dfs(root, 0, levelSumList, levelNodeNumberList);
+		dfs(root, 0, sumList, numberList);
 		// 求平均值（因为两个数组是对应的）
 		for (int i = 0; i < resList.size(); i++)
-			resList.set(i, levelSumList.get(i) / levelNodeNumberList.get(i));
-		return levelSumList;
+			resList.set(i, sumList.get(i) / numberList.get(i));
+		return sumList;
 	}
 
 	// 进行DFS-整体是先序遍历的模板
 	public void dfs(TreeNode root, int level, List<Double> sumList, List<Integer> numberList) {
 		// Base case
-		if (root == null)
-			return;
-		// 说明这里到了一个新的层
+		if (root == null) return;
+		// 更新已有的记录
 		if (level < sumList.size()) {
 			sumList.set(level, sumList.get(level) + root.val);
 			numberList.set(level, numberList.get(level) + 1);
+		// 说明这里到了一个新的层
 		} else {
 			// 加入元素
 			sumList.add(1.0 * root.val);

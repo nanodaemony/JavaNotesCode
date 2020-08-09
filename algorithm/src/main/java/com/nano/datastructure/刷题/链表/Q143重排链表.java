@@ -8,9 +8,7 @@ public class Q143重排链表 {
 
 	public void reorderList(ListNode head) {
 		// Base case
-		if (head == null || head.next == null || head.next.next == null) {
-			return;
-		}
+		if (head == null || head.next == null || head.next.next == null) return;
 		// 利用快慢指针找中点，链表分成两部分
 		ListNode slow = head;
 		ListNode fast = head;
@@ -33,7 +31,6 @@ public class Q143重排链表 {
 			head = newHead.next;
 			newHead = temp;
 		}
-
 	}
 	// 逆序一个链表
 	private ListNode reverseList(ListNode head) {

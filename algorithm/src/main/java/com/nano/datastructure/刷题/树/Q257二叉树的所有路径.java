@@ -13,26 +13,26 @@ public class Q257二叉树的所有路径 {
 	private List<String> resList = new ArrayList<>();
 
 	public List<String> binaryTreePaths(TreeNode root) {
-		if(root == null) return new ArrayList();
-		binaryTreePaths(root, "");
+		if(root == null) return new ArrayList<>();
+		dfs(root, "");
 		return resList;
 	}
 
-	public void binaryTreePaths(TreeNode root, String builder) {
+	public void dfs(TreeNode root, String res) {
 		// Base case
 		if(root == null) return;
 		// 遇到叶子节点就加入结果集并返回
 		if(root.left == null && root.right == null) {
-			builder = builder + root.val;
-			resList.add(builder);
+			res = res + root.val;
+			resList.add(res);
 			return;
 			// 非叶子节点就需要额外加入箭头符号
 		} else {
-			builder = builder + root.val + "->";
+			res = res + root.val + "->";
 		}
 		// 递归
-		binaryTreePaths(root.left, builder);
-		binaryTreePaths(root.right, builder);
+		dfs(root.left, res);
+		dfs(root.right, res);
 	}
 
 }

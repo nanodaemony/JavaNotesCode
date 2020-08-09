@@ -57,7 +57,6 @@ public class Q501二叉搜索树中的众数 {
 			resList.clear();
 			resList.add(currentValue);
 		}
-
 		helper(root.right);
 	}
 

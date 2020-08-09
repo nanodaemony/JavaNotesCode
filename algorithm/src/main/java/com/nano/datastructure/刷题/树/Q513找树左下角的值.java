@@ -22,8 +22,8 @@ public class Q513找树左下角的值 {
 		queue.add(root);
 		// 队列为空时退出循环
 		while(queue.size() != 0) {
-			int len = queue.size();
-			for(int i = 0; i < len; i++) {
+			int size = queue.size();
+			for(int i = 0; i < size; i++) {
 				TreeNode temp = queue.poll();
 				// 关键步骤！！记录每一行的第一个数！！！！！！
 				if(i == 0) {
@@ -55,7 +55,8 @@ public class Q513找树左下角的值 {
 	private void helper(TreeNode root, int level) {
 		// Base case
 		if(root == null) return;
-		// 当第一次当前层大于目前遍历到的最深的层的时候更新数据，由于是先序遍历，所以一定是每行左边第一个节点开启新的一行
+		// 当第一次当前层大于目前遍历到的最深的层的时候更新数据
+		// 由于是先序遍历，所以一定是每行左边第一个节点开启新的一行
 		if(level > deepLevel) {
 			// 更新最深的层数
 			deepLevel = level;

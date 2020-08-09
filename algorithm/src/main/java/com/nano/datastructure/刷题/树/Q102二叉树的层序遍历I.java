@@ -17,20 +17,18 @@ public class Q102二叉树的层序遍历I {
 	 */
 	public List<List<Integer>> levelOrder(TreeNode root) {
 		// Base case
-		if(root == null) {
-			return new ArrayList();
-		}
+		if(root == null) return new ArrayList<>();
 		// 使用辅助队列并将根节点入队列
-		Queue<TreeNode> queue = new LinkedList<TreeNode>() ;
+		Queue<TreeNode> queue = new LinkedList<>() ;
 		queue.add(root);
-		List<List<Integer>> resList = new ArrayList();
+		List<List<Integer>> resList = new ArrayList<>();
 		// 队列为空时退出循环
 		while(queue.size() != 0) {
 			// 获取当前队列中的元素个数，也就是当前这一层有多少个结点，这是为了控制访问到了某一层
-			int len = queue.size();
-			List<Integer> levelList = new ArrayList();
+			int size = queue.size();
+			List<Integer> levelList = new ArrayList<>();
 			// 将当前层的元素依次出队列并处理数据，每弹出一个结点并再次将其左右子节点入队列
-			for(int i = 0; i < len; i++) {
+			for(int i = 0; i < size; i++) {
 				// 出队列并处理数据
 				TreeNode temp = queue.poll();
 				levelList.add(temp.val);
@@ -60,12 +58,11 @@ public class Q102二叉树的层序遍历I {
 
 	// 辅助方法:整体是先序遍历的模板
 	public void dfs(TreeNode node, int level) {
-		// 说明遇到了新的level
-		if (resList.size() == level)
-			// 添加一层新的到结果中
+		// 说明遇到了新的一层则新建一个列表,并添加一层新的到结果中
+		if (resList.size() == level) {
 			resList.add(new ArrayList<>());
-
-		// 将当前节点的值加入到list中（先序遍历）
+		}
+		// 根据层数获取对应的列表并将当前节点的值加入到list中（先序遍历）
 		resList.get(level).add(node.val);
 
 		// 递归进行

@@ -24,8 +24,12 @@ public class Q155最小值栈 {
 
 	public void pop() {
 		// 如果弹出的元素等于最小值栈的栈顶，则同时弹出
-		if(dataStack.pop().equals(minStack.peek())) {
+		if (dataStack.peek().equals(minStack.peek())) {
+			dataStack.pop();
 			minStack.pop();
+			// 否则就只弹出普通栈顶
+		} else {
+			dataStack.pop();
 		}
 	}
 

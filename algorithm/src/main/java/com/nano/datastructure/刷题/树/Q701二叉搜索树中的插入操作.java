@@ -25,32 +25,29 @@ public class Q701二叉搜索树中的插入操作 {
 	 * 迭代法
 	 */
 	public TreeNode insertIntoBST2(TreeNode root, int val) {
-
-		// 记录根节点
-		TreeNode node = root;
-		while (node != null) {
-			// 大于当前节点值就往右子树插入
-			if (val > node.val) {
-				// 此时插入成功
-				if (node.right == null) {
-					node.right = new TreeNode(val);
-					return root;
-					// 否则持续找右子树
+		// Base case
+		if (root == null) return new TreeNode(val);
+		TreeNode cur = root;
+		// 遍历找到插入位置
+		while (true) {
+			// 小于往左边插入
+			if (val < cur.val) {
+				if (cur.left != null) {
+					cur = cur.left;
 				} else {
-					node = node.right;
+					cur.left = new TreeNode(val);
+					break;
 				}
-			} else { // 小于节点值就插入左子树
-				// 此时插入成功
-				if (node.left == null) {
-					node.left = new TreeNode(val);
-					return root;
+			} else if (val > cur.val) {
+				if (cur.right != null) {
+					cur = cur.right;
 				} else {
-					// 否则持续找左子树
-					node = node.left;
+					cur.right = new TreeNode(val);
+					break;
 				}
 			}
 		}
-		// 都没有则返回一个节点
-		return new TreeNode(val);
+		return root;
 	}
+
 }

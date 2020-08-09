@@ -14,7 +14,7 @@ public class Q2两链表数相加 {
 		int carry = 0;
 		// 当两链表都为null才退出
 		while (head1 != null || head2 != null) {
-			// 取链表的值，如果一个已经为null则返回0
+			// 取链表的值，如果一个已经为null则返回0,这里是重点
 			int value1 = (head1 != null) ? head1.val : 0;
 			int value2 = (head2 != null) ? head2.val : 0;
 			// 带进位值计算和
@@ -25,7 +25,7 @@ public class Q2两链表数相加 {
 			cur.next = new ListNode(sum % 10);
 			// 移动cur
 			cur = cur.next;
-			// 如果链表不为null还要继续移动指针进行下一轮相加
+			// 如果两个链表都不为null还要继续移动指针进行下一轮相加
 			if (head1 != null) head1 = head1.next;
 			if (head2 != null) head2 = head2.next;
 		}

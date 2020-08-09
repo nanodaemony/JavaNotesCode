@@ -18,11 +18,9 @@ public class Q1305两棵二叉搜索树值的合并 {
 		// 归并排序合并两个有序链表
 		return merge(ansList1, ansList2);
 	}
-
+	// 中序遍历
 	private void dfs(TreeNode root, List<Integer> ansList) {
-		if (root == null) {
-			return;
-		}
+		if (root == null) return;
 		// 中序遍历放入值
 		dfs(root.left, ansList);
 		ansList.add(root.val);
@@ -45,11 +43,9 @@ public class Q1305两棵二叉搜索树值的合并 {
 				index2++;
 			}
 		}
-
 		while (index1 < size1) {
 			ansList.add(list1.get(index1++));
 		}
-
 		while (index2 < size2) {
 			ansList.add(list2.get(index2++));
 		}

@@ -14,11 +14,9 @@ public class Q559N叉树的最大深度 {
 		// Base case：为null退出
 		if(root == null) return 0;
 		// 当为叶子结点直接返回1
-		if(root.children == null || root.children.size() == 0) {
-			return 1;
-		}
+		if(root.children == null || root.children.size() == 0) return 1;
 		// 使用列表存储各个子树的高度信息值
-		List<Integer> heightList = new ArrayList();
+		List<Integer> heightList = new ArrayList<>();
 		// 获取各个子树的高度信息并存入列表
 		for(Node head : root.children) {
 			heightList.add(maxDepth(head));
@@ -27,4 +25,26 @@ public class Q559N叉树的最大深度 {
 		return Collections.max(heightList) + 1;
 	}
 
-}
+
+	int maxDepth = 0;
+	public int maxDepth2(Node root) {
+		if (root == null) return 0;
+		dfs(root, 0);
+		return maxDepth;
+	}
+
+	private void dfs(Node root, int level) {
+
+		if (root == null) return;
+		if(root.children == null || root.children.size() == 0) {
+			maxDepth = Math.max(maxDepth, level);
+		}
+		for (Node node : root.children) {
+			dfs(node, level);
+		}
+
+	}
+
+
+
+	}

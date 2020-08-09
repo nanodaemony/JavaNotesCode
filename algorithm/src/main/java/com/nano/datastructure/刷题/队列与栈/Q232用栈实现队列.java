@@ -11,8 +11,8 @@ public class Q232用栈实现队列 {
 	private Stack<Integer> inStack = new Stack<>();
 	private Stack<Integer> outStack = new Stack<>();
 
-	// 压入就压到in栈
 	public void push(int x) {
+		// 压入就压到in栈
 		inStack.push(x);
 	}
 
@@ -20,9 +20,7 @@ public class Q232用栈实现队列 {
 		// 出栈为空
 		if(outStack.isEmpty()) {
 			// 如果入栈也为空，抛异常
-			if(inStack.isEmpty()) {
-				return -1;
-			}
+			if(inStack.isEmpty()) return -1;
 			// 将入栈的全部元素放到出栈中
 			while(!inStack.isEmpty()) {
 				outStack.push(inStack.pop());
@@ -32,8 +30,8 @@ public class Q232用栈实现队列 {
 		return outStack.pop();
 	}
 
-
 	public boolean empty() {
+		// 看看是否都为空
 		return inStack.isEmpty() && outStack.isEmpty();
 	}
 }

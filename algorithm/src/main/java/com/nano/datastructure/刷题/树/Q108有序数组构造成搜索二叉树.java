@@ -16,10 +16,8 @@ public class Q108有序数组构造成搜索二叉树 {
 		// Base case
 		if(start > end) return null;
 		// 仅一个元素则直接返回这个元素构成的结点
-		if(start == end) {
-			return new TreeNode(nums[start]);
-		}
-		// 否则用中间结点构造根节点
+		if(start == end) return new TreeNode(nums[start]);
+		// 否则用中间结点构造根节点,这样才是高度平衡的
 		int mid = (start + end) / 2;
 		TreeNode root = new TreeNode(nums[mid]);
 		// 递归构造左右子树

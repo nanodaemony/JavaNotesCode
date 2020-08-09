@@ -29,9 +29,7 @@ public class Q98判断是否是搜索二叉树 {
             }else{
                 head = stack.pop();
                 // 注意：判断是否是升序
-                if(preValue > head.val){
-                    return false;
-                }
+                if(preValue > head.val) return false;
                 // 注意：切换前值
                 preValue = head.val;
                 // 将节点切换到右子结点
@@ -45,21 +43,22 @@ public class Q98判断是否是搜索二叉树 {
     //--------------下面是递归方法--------------
 
     long preValue = Long.MIN_VALUE;
+    boolean isBST = true;
     public boolean isValidBST(TreeNode root) {
-        if (root == null) {
-            return true;
-        }
+        // Base case
+        if (root == null) return true;
+        dfs(root);
+        return isBST;
+    }
+
+    private void dfs(TreeNode root) {
         // 访问左子树
-        if (!isValidBST(root.left)) {
-            return false;
-        }
+        isValidBST(root.left);
         // 访问当前节点：如果当前节点小于等于中序遍历的前一个节点，说明不满足BST，返回 false；否则继续遍历。
-        if (root.val <= preValue) {
-            return false;
-        }
+        if (root.val <= preValue) isBST = false;
         preValue = root.val;
         // 访问右子树
-        return isValidBST(root.right);
+        isValidBST(root.right);
     }
 
 

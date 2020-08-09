@@ -13,12 +13,12 @@ public class Q225用队列实现栈 {
 	private Queue<Integer> queue = new LinkedList<>();
 
 	public void push(int x) {
+		// 得到当前队列的大小
+		int size = queue.size();
 		// 加入到队列中
 		queue.add(x);
-		// 得到队列的大小
-		int size = queue.size();
 		// 把前面的元素全部搬运到刚插入的元素的后面
-		while (size-- > 1) {
+		for (int i = 0; i < size; i++) {
 			queue.add(queue.poll());
 		}
 	}

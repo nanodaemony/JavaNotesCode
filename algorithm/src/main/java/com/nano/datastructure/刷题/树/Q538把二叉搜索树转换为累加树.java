@@ -10,14 +10,8 @@ public class Q538把二叉搜索树转换为累加树 {
 	int sum = 0;
 
 	public TreeNode convertBST(TreeNode root) {
-		TreeNode cur = root;
-		helper(cur);
-		return root;
-	}
-	// 整个是中序遍历的模板：但是搜索二叉树先遍历右子树再遍历左子树就是降序遍历！
-	private void helper(TreeNode root) {
 		// Base case
-		if(root == null) return;
+		if(root == null) return null;
 		// 先递归右子树
 		convertBST(root.right);
 		// 不断累积更新sum值
@@ -26,6 +20,7 @@ public class Q538把二叉搜索树转换为累加树 {
 		root.val = sum;
 		// 再递归左子树
 		convertBST(root.left);
+		return root;
 	}
 
 }

@@ -22,11 +22,9 @@ public class Q938二叉搜索树的范围和 {
 			if (left <= node.val && node.val <= right)
 				sum = sum + node.val;
 			// 递归左子树
-			if (left < node.val)
-				dfs(node.left, left, right);
+			if (left < node.val) dfs(node.left, left, right);
 			// 递归右子树
-			if (node.val < right)
-				dfs(node.right, left, right);
+			if (node.val < right) dfs(node.right, left, right);
 		}
 	}
 
@@ -34,7 +32,7 @@ public class Q938二叉搜索树的范围和 {
 	/**
 	 * 迭代法
 	 */
-	public int rangeSumBST2(TreeNode root, int L, int R) {
+	public int rangeSumBST2(TreeNode root, int leftVal, int rightVal) {
 		int sum = 0;
 		// 使用栈
 		Stack<TreeNode> stack = new Stack();
@@ -44,14 +42,12 @@ public class Q938二叉搜索树的范围和 {
 			// 弹出一个节点
 			TreeNode node = stack.pop();
 			if (node != null) {
-				// 如果符合条件
-				if (L <= node.val && node.val <= R)
-					sum += node.val;
+				// 符合条件
+				if (leftVal <= node.val && node.val <= rightVal)
+					sum = sum + node.val;
 				// 先压左边再压右边
-				if (L < node.val)
-					stack.push(node.left);
-				if (node.val < R)
-					stack.push(node.right);
+				if (leftVal < node.val) stack.push(node.left);
+				if (node.val < rightVal) stack.push(node.right);
 			}
 		}
 		return sum;

@@ -6,7 +6,7 @@ package com.nano.datastructure.刷题.链表;
  */
 public class Q86分隔链表 {
 
-	public ListNode partition(ListNode head, int x) {
+	public ListNode partition(ListNode head, int num) {
 
 		// dummyLess存放小于X的结点，dummyMore存放大于等于X的结点
 		ListNode dummyLess = new ListNode(0);
@@ -16,7 +16,7 @@ public class Q86分隔链表 {
 
 		while (head != null) {
 			// 值小于X放在dummyLess下
-			if (head.val < x) {
+			if (head.val < num) {
 				less.next = head;
 				less = less.next;
 			} else {

@@ -42,9 +42,7 @@ public class Q590N叉树的后序遍历 {
 	public List<Integer> postorder2(Node root) {
 
 		// Base case
-		if (root == null) {
-			return new ArrayList<>();
-		}
+		if (root == null) return new ArrayList<>();
 		// 使用一个栈存储结点
 		Stack<Node> stack = new Stack<>();
 		// 存放结果

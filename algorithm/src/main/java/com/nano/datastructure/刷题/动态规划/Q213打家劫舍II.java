@@ -18,14 +18,14 @@ public class Q213打家劫舍II {
 
 
 	// 指定范围的打家劫舍
-	private int normalRob(int[] nums, int firstRob, int lastRob) {
-		int pre2 = 0, pre1 = 0;
-		for (int i = firstRob; i <= lastRob; i++) {
-			int cur = Math.max(pre1, pre2 + nums[i]);
-			pre2 = pre1;
-			pre1 = cur;
+	private int normalRob(int[] nums, int start, int end) {
+		int slow = 0, fast = 0;
+		for (int i = start; i <= end; i++) {
+			int temp = Math.max(fast, slow + nums[i]);
+			slow = fast;
+			fast = temp;
 		}
-		return pre1;
+		return fast;
 	}
 
 }

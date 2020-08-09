@@ -6,10 +6,10 @@ package com.nano.datastructure.刷题.树;
  */
 public class Q1325删除给定值的叶子节点 {
 
+	// 先处理叶子所以整个是后序遍历的过程
 	public TreeNode removeLeafNodes(TreeNode root, int target) {
 		// Base case
 		if (root == null) return null;
-		// 先处理叶子所以整个是后序遍历的过程
 		// 递归设置结点的左右结点值
 		root.left = removeLeafNodes(root.left, target);
 		root.right = removeLeafNodes(root.right, target);

@@ -25,9 +25,7 @@ public class Q235搜索二叉树的最近公共祖先 {
 		while (!queue.isEmpty()) {
 			TreeNode node = queue.poll();
 			// 判断值，第一个符合条件的就直接返回
-			if (node.val >= min && node.val <= max) {
-				return node;
-			}
+			if (node.val >= min && node.val <= max) return node;
 			if (node.left != null) queue.offer(node.left);
 			if (node.right != null) queue.offer(node.right);
 		}

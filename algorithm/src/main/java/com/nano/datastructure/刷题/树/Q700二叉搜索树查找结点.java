@@ -26,9 +26,11 @@ public class Q700二叉搜索树查找结点 {
 	 * 迭代法
 	 */
 	public TreeNode searchBST2(TreeNode root, int target) {
+
 		while (root != null) {
 			if(root.val == target) {
 				return root;
+				// 往右寻找
 			} else if (root.val < target) {
 				root = root.right;
 			} else {

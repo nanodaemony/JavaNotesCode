@@ -24,13 +24,10 @@ public class Q20有效的括号 {
 				}
 				// 弹出栈顶符号
 				char temp = stack.pop();
-				// 必须完全匹配才行
-				boolean b1 = c == ')' && temp != '(';
-				boolean b2 = c == ']' && temp != '[';
-				boolean b3 = c == '}' && temp != '{';
-				if (b1 || b2 || b3) {
-					return false;
-				}
+
+				if ((temp == '(' && c != ')')) return false;
+				if ((temp == '[' && c != ']')) return false;
+				if ((temp == '{' && c != '}')) return false;
 			}
 		}
 		// 最后看栈是否为空

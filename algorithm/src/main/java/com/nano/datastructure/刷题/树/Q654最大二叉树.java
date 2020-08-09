@@ -20,20 +20,19 @@ public class Q654最大二叉树 {
 
 		// 遍历数组寻找当前范围下的最大值作为分界线
 		int max = nums[start];
-		int maxValueIndex = start;
+		int maxIndex = start;
 		for (int i = start + 1; i < end; i++) {
 			if (max < nums[i]) {
 				// 更新最大数值和索引值
 				max = nums[i];
-				maxValueIndex = i;
+				maxIndex = i;
 			}
 		}
-
 		// 使用最大值构造一个根结点
 		TreeNode root = new TreeNode(max);
 		// 递归设置左右子树
-		root.left = helper(start, maxValueIndex);
-		root.right = helper(maxValueIndex + 1, end);
+		root.left = helper(start, maxIndex);
+		root.right = helper(maxIndex + 1, end);
 		return root;
 	}
 

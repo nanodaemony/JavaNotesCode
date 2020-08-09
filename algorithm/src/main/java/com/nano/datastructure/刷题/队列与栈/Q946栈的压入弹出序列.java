@@ -23,11 +23,11 @@ public class Q946栈的压入弹出序列 {
         for (int i = 0; i < pushArray.length; i++) {
             // 不断将入栈数组压栈
             stack.push(pushArray[i]);
-            // 入栈后判断是否是为空或者栈顶元素是否是等于出栈数组索引处的值
+            // 每压栈一个元素后判断栈顶元素是否是等于出栈数组索引处的值
+            // 如果是则不断弹栈，弹栈时确保栈不为空
             while (!stack.isEmpty() && stack.peek() == popArray[popIndex]) {
-                // 弹出元素
+                // 弹出元素,并将出栈序列指针后移
                 stack.pop();
-                // 出栈序列指针后移
                 popIndex++;
             }
         }
