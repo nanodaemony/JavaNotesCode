@@ -10,27 +10,27 @@ public class Q5最长回文子串 {
 	 * 动态规划法
 	 */
 	public static String longestPalindrome(String str) {
-		int strLen = str.length();
+		int len = str.length();
 		int maxLen = 0;
 		String ans = "";
-		boolean[][] dp = new boolean[strLen][strLen];
+		boolean[][] dp = new boolean[len][len];
 		// 遍历所有长度
-		for (int len = 1; len <= strLen; len++) {
-			for (int start = 0; start < strLen; start++) {
-				int end = start + len - 1;
+		for (int i = 1; i <= str.length(); i++) {
+			for (int j = 0; j < str.length(); j++) {
+				int end = j + i - 1;
 				// 下标越界，结束循环
-				if (end >= strLen) {
-					break;
-				}
-				dp[start][end] = (len == 1 || len == 2 || dp[start + 1][end - 1]) && str.charAt(start) == str.charAt(end);
-				if (dp[start][end] && len > maxLen) {
-					maxLen = len;
-					ans = str.substring(start, end + 1);
+				if (end >= len) break;
+
+				dp[j][end] = (i == 1 || i == 2 || dp[j + 1][end - 1]) && str.charAt(j) == str.charAt(end);
+				if (dp[j][end] && i > maxLen) {
+					maxLen = i;
+					ans = str.substring(j, end + 1);
 				}
 			}
 		}
 		return ans;
 	}
+
 
 	/**
 	 * 动态规划2

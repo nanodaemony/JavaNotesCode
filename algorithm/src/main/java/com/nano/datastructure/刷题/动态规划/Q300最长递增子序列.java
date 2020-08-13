@@ -41,19 +41,32 @@ public class Q300最长递增子序列 {
 	 * 优化DP
 	 */
 	public int lengthOfLIS2(int[] nums) {
-		int[] tails = new int[nums.length];
-		int res = 0;
+		int n = nums.length;
+		int[] tails = new int[n];
+		int len = 0;
 		for (int num : nums) {
-			int i = 0, j = res;
-			while (i < j) {
-				int m = (i + j) / 2;
-				if (tails[m] < num) i = m + 1;
-				else j = m;
+			int index = binarySearch(tails, len, num);
+			tails[index] = num;
+			if (index == len) {
+				len++;
 			}
-			tails[i] = num;
-			if (res == j) res++;
 		}
-		return res;
+		return len;
+	}
+
+	private int binarySearch(int[] tails, int len, int key) {
+		int left = 0, right = len;
+		while (left < right) {
+			int mid = left + (right - left) / 2;
+			if (tails[mid] == key) {
+				return mid;
+			} else if (tails[mid] > key) {
+				right = mid;
+			} else {
+				left = mid + 1;
+			}
+		}
+		return left;
 	}
 
 
