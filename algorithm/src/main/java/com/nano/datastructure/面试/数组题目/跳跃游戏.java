@@ -7,15 +7,17 @@ package com.nano.datastructure.面试.数组题目;
 public class 跳跃游戏 {
 
 	public boolean canJump(int[] nums) {
-		int n = nums.length;
-		int rightmost = 0;
-		for (int i = 0; i < n; ++i) {
-			if (i <= rightmost) {
-				rightmost = Math.max(rightmost, i + nums[i]);
-				if (rightmost >= n - 1) {
-					return true;
-				}
+		int len = nums.length;
+		// 当前最右的距离
+		int rightMax = 0;
+		for (int i = 0; i < len; i++) {
+			// 说明当前的rightMax已经超过了当前的i索引位置
+			if (i <= rightMax) {
+				// 看看是否需要更新rightMax
+				rightMax = Math.max(rightMax, i + nums[i]);
 			}
+			// 如果此时已经超过末尾直接返回
+			if (rightMax >= len - 1) return true;
 		}
 		return false;
 	}

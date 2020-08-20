@@ -1,7 +1,9 @@
 package com.nano.datastructure.面试.字符串;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @author: nano
@@ -31,5 +33,31 @@ public class 最长不含重复字符的子字符串 {
 		return res;
 	}
 
+
+	/**
+	 * 滑动窗口法
+	 */
+	public int lengthOfLongestSubstring2(String str) {
+		// Set记录每个字符是否出现过
+		Set<Character> set = new HashSet<Character>();
+		int len = str.length();
+		// 右指针初始值为-1，相当于在字符串的左边界的左侧，还没有开始移动
+		int right = -1, res = 0;
+
+		for (int i = 0; i < len; i++) {
+			// 左指针向右移动一格，移除一个字符
+			if (i != 0) {
+				set.remove(str.charAt(i - 1));
+			}
+			// 不断地移动右指针
+			while (right + 1 < len && !set.contains(str.charAt(right + 1))) {
+				set.add(str.charAt(right + 1));
+				right++;
+			}
+			// 更新记录,第i到right个字符是一个极长的无重复字符子串
+			res = Math.max(res, right - i + 1);
+		}
+		return res;
+	}
 
 }
