@@ -6,41 +6,42 @@ package com.nano.datastructure.面试.其他;
  */
 public class 数组中第K大的数 {
 
+
+
 	public int findKthLargest(int[] nums, int k) {
-		int len = nums.length;
-		int left = 0;
-		int right = len - 1;
-		// 转换一下，第k大元素的索引是len-k
-		int target = len - k;
-		while (true) {
+		// 由于是第K大,所以需要减一下
+		k = nums.length - k;
+		int left = 0, right = nums.length - 1;
+		while (left < right) {
 			int index = partition(nums, left, right);
-			if (index == target) {
-				return nums[index];
-			} else if (index < target) {
+			if (index == k) {
+				break;
+			} else if (index < k) {
 				left = index + 1;
 			} else {
 				right = index - 1;
 			}
 		}
+		return nums[k];
 	}
 
-	public int partition(int[] nums, int left, int right) {
-		int pivot = nums[left];
-		int j = left;
-		for (int i = left + 1; i <= right; i++) {
-			if (nums[i] < pivot) {
-				j++;
-				swap(nums, j, i);
-			}
+	private int partition(int[] nums, int left, int right) {
+		int i = left, j = right + 1;
+		int pivotVal = nums[left];
+		while (true) {
+			// 找到左边
+			while (nums[i] < pivotVal && i < right) i++;
+			while (nums[j] > pivotVal && j > left) j--;
+			if (i >= j) break;
+			swap(nums, i, j);
 		}
-		swap(nums, j, left);
+		swap(nums, left, j);
 		return j;
 	}
 
 	private void swap(int[] nums, int i, int j) {
-		int temp = nums[i];
+		int t = nums[i];
 		nums[i] = nums[j];
-		nums[j] = temp;
+		nums[j] = t;
 	}
-
 }

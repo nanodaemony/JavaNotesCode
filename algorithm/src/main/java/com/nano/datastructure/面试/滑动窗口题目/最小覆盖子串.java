@@ -1,4 +1,4 @@
-package com.nano.datastructure.面试.字符串;
+package com.nano.datastructure.面试.滑动窗口题目;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -6,10 +6,12 @@ import java.util.Map;
 
 /**
  * @author: nano
- * @time: 2020/8/18 13:45
+ * @time: 2020/8/23 21:21
  */
 public class 最小覆盖子串 {
 
+
+	// 使用两个map来保存S与T中的字符串是否匹配
 	Map<Character, Integer> oriMap = new HashMap<>();
 	Map<Character, Integer> cntMap = new HashMap<>();
 
@@ -20,7 +22,7 @@ public class 最小覆盖子串 {
 			char c = t.charAt(i);
 			oriMap.put(c, oriMap.getOrDefault(c, 0) + 1);
 		}
-		// 滑动窗口左右指针
+		// 窗口左右指针
 		int left = 0, right = -1;
 		int len = Integer.MAX_VALUE, ansL = -1, ansR = -1;
 		int sLen = s.length();
@@ -57,54 +59,5 @@ public class 最小覆盖子串 {
 		}
 		return true;
 	}
-
-
-	public static String minWindow2(String s, String t) {
-
-		if (s == null || "".equals(s) || t == null || "".equals(t) || s.length() < t.length()) return "";
-		// 用来统计t中每个字符出现次数
-		int[] needs = new int[128];
-		// 用来统计滑动窗口中每个字符出现次数
-		int[] window = new int[128];
-		// 用needs数组事先统计每个字符出现的个数
-		for (int i = 0; i < t.length(); i++) needs[t.charAt(i)]++;
-		// 滑动窗口左右指针
-		int left = 0, right = 0;
-		String res = "";
-		// 目前有多少个字符
-		int count = 0;
-		// 用来记录最短需要多少个字符
-		int minLength = Integer.MAX_VALUE;
-
-		while (right < s.length()) {
-			char ch = s.charAt(right);
-			// 串口字符计数器+1
-			window[ch]++;
-			if (needs[ch] > 0 && needs[ch] >= window[ch]) {
-				count++;
-			}
-			// 移动到不满足条件为止
-			while (count == t.length()) {
-				ch = s.charAt(left);
-				if (needs[ch] > 0 && needs[ch] >= window[ch]) {
-					count--;
-				}
-				if (right - left + 1 < minLength) {
-					minLength = right - left + 1;
-					res = s.substring(left, right + 1);
-
-				}
-				window[ch]--;
-				left++;
-
-			}
-			right++;
-
-		}
-		return res;
-	}
-
-
-
 
 }
