@@ -17,38 +17,37 @@ public class Main {
 	public static void main(String[] args) {
 
 
-		Scanner scanner = new Scanner(System.in);
-
-		int num = scanner.nextInt();
-
-		System.out.println(getNthNum(num));
-
+		String[] nums = new String[] {"1,1", "2,2", "1,2", "1,3"};
+		System.out.println(get(nums));
 	}
 
-
-	private static long getNthNum(int num) {
-
-		if(num <= 0 || num > 1000) return -1;
-
-		long res = 0;
-		long i = 0;
-		while (true) {
-			if(isValid(i)) {
-				res++;
-				if (res == num) return i;
+	public static int get(String[] points) {
+		if(points == null || points.length == 0) {
+			return -1;
+		}
+		int[][] nums = new int[points.length][2];
+		for (int i = 0; i < nums.length; i++) {
+			nums[i][0] = Integer.parseInt(points[i].split(",")[0]);
+			nums[i][1] = Integer.parseInt(points[i].split(",")[1]);
+		}
+		int sumX = 0;
+		int sumY = 0;
+		for (int i = 0; i < nums.length; i++) {
+			sumX = sumX + nums[i][0];
+			sumY = sumY + nums[i][1];
+		}
+		double pivotX = (double) (sumX / nums.length);
+		double pivotY = (double) (sumY / nums.length);
+		int res = 0;
+		double distance = Integer.MAX_VALUE;
+		for (int i = 0; i < nums.length; i++) {
+			double temp = Math.pow((nums[i][0] - pivotX), 2) + Math.pow((nums[i][1] - pivotY), 2);
+			if(temp < distance) {
+				distance = temp;
+				res = i;
 			}
-			i++;
 		}
+		return res;
 	}
 
-
-
-	private static boolean isValid(long num) {
-		char[] nums = ("" + num).toCharArray();
-
-		for (char c : nums) {
-			if (c != '2' && c != '3' && c != '5') return false;
-		}
-		return true;
-	}
 }

@@ -3,6 +3,7 @@ package com.nano.datastructure.面试.搜索与回溯题目;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -95,6 +96,42 @@ public class 分割回文串 {
 			backtracking(s, i + 1, len, dp, path);
 			path.removeLast();
 		}
+	}
+
+
+
+	public List<List<String>> partition3(String str) {
+		List<List<String>> resList = new ArrayList<>();
+		Deque<String> path = new LinkedList<>();
+		doPartition(str, resList, path);
+		return resList;
+	}
+
+	private void doPartition(String str, List<List<String>> resList, Deque<String> path) {
+		// 字符串长度刚好为0
+		if (str.length() == 0) {
+			resList.add(new ArrayList<>(path));
+			return;
+		}
+
+		for (int i = 0; i < str.length(); i++) {
+			// 如果当前是回文串
+			if (isPalindrome(str, 0, i)) {
+				//
+				path.add(str.substring(0, i + 1));
+				doPartition(str.substring(i + 1), resList, path);
+				path.removeLast();
+			}
+		}
+	}
+
+	private boolean isPalindrome(String s, int begin, int end) {
+		while (begin < end) {
+			if (s.charAt(begin++) != s.charAt(end--)) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 

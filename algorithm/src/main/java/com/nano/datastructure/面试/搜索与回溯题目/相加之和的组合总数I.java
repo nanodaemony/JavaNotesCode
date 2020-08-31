@@ -9,7 +9,7 @@ import java.util.List;
  * @author: nano
  * @time: 2020/8/28 0:07
  */
-public class 组合总和 {
+public class 相加之和的组合总数I {
 	private List<List<Integer>> resList = new ArrayList<>();
 
 	public List<List<Integer>> combinationSum(int[] nums, int target) {
