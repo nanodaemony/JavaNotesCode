@@ -60,8 +60,8 @@ public class HeapSort {
         if (ri <= len && nums[ri] > nums[li]) // 先判断左右子节点，哪个较大。
             cMax = ri;
         if (nums[cMax] > nums[index]) {  //若“<”这是从大到小
-            swap(nums, cMax, index);      // 如果父节点被子节点调换，
-            maxHeapify(nums, cMax, len);  // 则需要继续判断换下后的父节点是否符合堆的特性。
+            swap(nums, cMax, index);      // 如果父节点被子节点调换
+            maxHeapify(nums, cMax, len);  // 则需要继续判断换下后的父节点是否符合堆的特性
         }
     }
 
